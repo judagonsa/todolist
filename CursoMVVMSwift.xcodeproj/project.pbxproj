@@ -34,7 +34,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ModelDataItem.xcdatamodeld,
-				"Models/ToDoItem+CoreDataProperties.swift",
 			);
 			target = 6D6FB8892D07D13B00412AB5 /* CursoMVVMSwift */;
 		};

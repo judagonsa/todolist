@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Item: Identifiable {
+struct Item: Identifiable, Equatable {
     let id: String = UUID().uuidString
     var title: String
     var note: String?
