@@ -18,6 +18,7 @@ extension ToDoItem {
 
     @NSManaged public var isArchive: Bool
     @NSManaged public var isFavorite: Bool
+    @NSManaged public var isCompleted: Bool
     @NSManaged public var date: Date?
     @NSManaged public var note: String?
     @NSManaged public var title: String?

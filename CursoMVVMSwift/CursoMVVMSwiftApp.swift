@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CursoMVVMSwiftApp: App {
+    @StateObject private var viewModel = ToDoViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

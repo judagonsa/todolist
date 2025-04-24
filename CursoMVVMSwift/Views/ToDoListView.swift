@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ToDoList: View {
+struct ToDoListView: View {
+    
+    @State var showSheet: Bool = false
     
     let colums: [GridItem] = [
         GridItem(.flexible(), spacing: 8),
@@ -22,7 +24,12 @@ struct ToDoList: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .overlay {
-                    
+                    if showSheet {
+                        ToDoSheet(isShow: $showSheet) {
+                            ToDoAddView(showed: $showSheet)
+                        }
+                        .ignoresSafeArea(.keyboard)
+                    }
                 }
                 
             }
@@ -41,7 +48,7 @@ struct ToDoList: View {
                         }
                         
                         Button {
-                            
+                            showSheet.toggle() 
                         } label: {
                             Image(systemName: "plus")
                                 .font(.system(size: 20, weight: .semibold))
@@ -55,5 +62,5 @@ struct ToDoList: View {
 }
 
 #Preview {
-    ToDoList()
+    ToDoListView()
 }

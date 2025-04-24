@@ -50,15 +50,22 @@ class ToDoViewModel: ObservableObject {
         return index
     }
     
-    private func validateInput(ofText text: String) -> Bool {
+    func validateInput(ofText text: String) -> Bool {
         guard text.trimmingCharacters(in: .whitespaces).count > 2 else {
             return false
         }
         return true
     }
     
-    public func addToDo() {
-        
+    public func addToDo(withTitle title: String, note: String, date: Date) {
+        let newToDo = ToDoItem(context: storeContainer.viewContext)
+        newToDo.id = UUID().uuidString
+        newToDo.title = title
+        newToDo.note = note
+        newToDo.date = date
+        newToDo.isCompleted = false
+        newToDo.isFavorite = false
+        saveData()
     }
     
     public func updateToDo() {
