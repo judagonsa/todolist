@@ -28,7 +28,7 @@ struct ToDoItemView: View {
                 }
                 
                 VStack {
-                    Text("")
+                    Text(todo.title)
                         .font(.title)
                         .fontWeight(.bold)
                         .lineLimit(12)

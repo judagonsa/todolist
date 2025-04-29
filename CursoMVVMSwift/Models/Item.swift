@@ -13,5 +13,5 @@ struct Item: Identifiable, Equatable {
     var date: Date
     var isCompleted: Bool
     var isArchive: Bool
-    var isFavorite: Bool? = false
+    var isFavorite: Bool
 }

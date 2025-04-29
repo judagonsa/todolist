@@ -14,6 +14,7 @@ class ToDoViewModel: ObservableObject {
     
     //evitar fugas de memorias
     var cancellables = Set<AnyCancellable>()
+    
     var storeContainer: NSPersistentContainer {
         return ToDoPersistenceManager.shared.container
     }
@@ -26,11 +27,12 @@ class ToDoViewModel: ObservableObject {
        do {
            let request: NSFetchRequest<ToDoItem> = ToDoItem.fetchRequest()
            let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+           
            request.sortDescriptors = [sortDescriptor]
            request.returnsObjectsAsFaults = false
            todos = try storeContainer.viewContext.fetch(request)
        } catch {
-           print("Error al recuperar datos")
+           print("Error al recuperar datos: \(error)")
        }
     }
     
@@ -65,6 +67,7 @@ class ToDoViewModel: ObservableObject {
         newToDo.date = date
         newToDo.isCompleted = false
         newToDo.isFavorite = false
+        newToDo.isArchive = false
         saveData()
     }
     

@@ -29,22 +29,9 @@
 		6D6FB8A42D07D13C00412AB5 /* CursoMVVMSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CursoMVVMSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		91B640812DB86BC700AB2E1F /* Exceptions for "CursoMVVMSwift" folder in "CursoMVVMSwift" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ModelDataItem.xcdatamodeld,
-			);
-			target = 6D6FB8892D07D13B00412AB5 /* CursoMVVMSwift */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6D6FB88C2D07D13B00412AB5 /* CursoMVVMSwift */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				91B640812DB86BC700AB2E1F /* Exceptions for "CursoMVVMSwift" folder in "CursoMVVMSwift" target */,
-			);
 			path = CursoMVVMSwift;
 			sourceTree = "<group>";
 		};

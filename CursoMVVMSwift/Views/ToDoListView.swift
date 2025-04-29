@@ -1,9 +1,9 @@
-//
-//  ToDoList.swift
-//  CursoMVVMSwift
-//
-//  Created by Julian González on 22/04/25.
-//
+    //
+    //  ToDoList.swift
+    //  CursoMVVMSwift
+    //
+    //  Created by Julian González on 22/04/25.
+    //
 
 import SwiftUI
 
@@ -25,55 +25,60 @@ struct ToDoListView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack (alignment: .center) {
-                ScrollView {
-                    if !unArchivedToDos.isEmpty {
-                        LazyVGrid(columns: colums, spacing: 10) {
-                            
-                        }
-                        .padding(.horizontal)
-                    } else {
-                        
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .overlay {
-                    if showSheet {
-                        ToDoSheet(isShow: $showSheet) {
-                            ToDoAddView(showed: $showSheet)
-                        }
-                        .ignoresSafeArea(.keyboard)
-                    }
-                }
-                
-            }
-            .navigationTitle("Notas")
-            .toolbarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        NavigationLink {
-                            
-                        } label: {
-                            Image(systemName: "trash")
-                                .resizable()
-                                .font(.system(size: 18, weight: .semibold))
-                                .foregroundStyle(.primary)
-                        }
-                        
-                        Button {
-                            showSheet.toggle()
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(.primary)
+        
+        ZStack (alignment: .center) {
+            ScrollView {
+                if !unArchivedToDos.isEmpty {
+                    LazyVGrid(columns: colums, spacing: 5) {
+                        ForEach(unArchivedToDos) { todo in
+                            ToDoItemView(todo: todo)
+                                .onTapGesture {
+                                    todoToPreview = todo
+                                    showSheet.toggle()
+                                }
                         }
                     }
+                    .padding(.horizontal)
+                } else {
+                    
                 }
             }
-            .navigationBarHidden(showSheet || todoToPreview != nil)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .overlay {
+                if showSheet {
+                    ToDoSheet(isShow: $showSheet) {
+                        ToDoAddView(showed: $showSheet)
+                    }
+                    .ignoresSafeArea(.keyboard)
+                }
+            }
+            
         }
+        .navigationTitle("Notas")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    NavigationLink {
+                        
+                    } label: {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundStyle(.primary)
+                    }
+                    
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundStyle(.primary)
+                    }
+                }
+            }
+        }
+        .navigationBarHidden(showSheet || todoToPreview != nil)
+        
     }
 }
 

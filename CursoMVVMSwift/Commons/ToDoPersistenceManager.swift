@@ -15,8 +15,8 @@ class ToDoPersistenceManager {
     private init() {
         container = NSPersistentContainer(name: "ModelDataItem")
         container.loadPersistentStores { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Error cargando notas \(error), \(error.userInfo)")
+            if let error = error {
+                fatalError("Error cargando notas \(error)")
             } else {
                 print("Carga de notas exitosa!")
             }
