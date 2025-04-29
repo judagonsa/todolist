@@ -9,18 +9,33 @@ import SwiftUI
 
 struct ToDoListView: View {
     
+    
+    @EnvironmentObject var viewModel: ToDoViewModel
+    
     @State var showSheet: Bool = false
+    @State var todoToPreview: ToDoItem? = nil
     
     let colums: [GridItem] = [
         GridItem(.flexible(), spacing: 8),
         GridItem(.flexible(), spacing: 8)
     ]
     
+    private var unArchivedToDos: [ToDoItem] {
+        viewModel.todos.filter { !$0.isArchive }
+    }
+    
     var body: some View {
         NavigationView {
             ZStack (alignment: .center) {
                 ScrollView {
-                    
+                    if !unArchivedToDos.isEmpty {
+                        LazyVGrid(columns: colums, spacing: 10) {
+                            
+                        }
+                        .padding(.horizontal)
+                    } else {
+                        
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .overlay {
@@ -48,7 +63,7 @@ struct ToDoListView: View {
                         }
                         
                         Button {
-                            showSheet.toggle() 
+                            showSheet.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .font(.system(size: 20, weight: .semibold))
@@ -57,6 +72,7 @@ struct ToDoListView: View {
                     }
                 }
             }
+            .navigationBarHidden(showSheet || todoToPreview != nil)
         }
     }
 }
