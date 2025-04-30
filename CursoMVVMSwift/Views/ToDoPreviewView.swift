@@ -65,7 +65,8 @@ struct ToDoPreviewView: View {
                         }
                         Spacer()
                         Button {
-                            
+                            viewModel.archiveToDo(todo: safeTodo)
+                            todo = nil
                         } label: {
                             Text("Archivar")
                                 .frame(maxWidth: .infinity)

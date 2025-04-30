@@ -45,7 +45,7 @@ class ToDoViewModel: ObservableObject {
         }
     }
     
-    private func getToDoIndex(_ todo: ToDoItem) -> Int? {
+    private func getToDoIndex(todo: ToDoItem) -> Int? {
         guard let index = todos.firstIndex(where: {$0.id == todo.id}) else {
             return nil
         }
@@ -77,7 +77,7 @@ class ToDoViewModel: ObservableObject {
         note: String,
         date: Date
     ) {
-        guard let index = getToDoIndex(todo) else { return }
+        guard let index = getToDoIndex(todo: todo) else { return }
         
         todos[index].title = title
         todos[index].note = note
@@ -85,19 +85,21 @@ class ToDoViewModel: ObservableObject {
         saveData()
     }
     
-    public func updateStatus(_ todo: ToDoItem) {
+    public func updateStatus(todo: ToDoItem) {
         
     }
     
-    public func deleteToDo(_ todo: ToDoItem) {
+    public func deleteToDo(todo: ToDoItem) {
         
     }
     
-    public func archiveToDo(_ todo: ToDoItem) {
-        
+    public func archiveToDo(todo: ToDoItem) {
+        guard let index = getToDoIndex(todo: todo) else { return }
+        todos[index].isArchive.toggle()
+        saveData()
     }
     
-    public func unArchiveToDo(_ todo: ToDoItem) {
+    public func unArchiveToDo(todo: ToDoItem) {
         
     }
 }
