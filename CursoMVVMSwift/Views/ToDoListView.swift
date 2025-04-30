@@ -34,7 +34,6 @@ struct ToDoListView: View {
                             ToDoItemView(todo: todo)
                                 .onTapGesture {
                                     todoToPreview = todo
-                                    showSheet.toggle()
                                 }
                         }
                     }
@@ -50,6 +49,8 @@ struct ToDoListView: View {
                         ToDoAddView(showed: $showSheet)
                     }
                     .ignoresSafeArea(.keyboard)
+                } else if todoToPreview != nil {
+                    ToDoPreviewView(todo: $todoToPreview)
                 }
             }
             

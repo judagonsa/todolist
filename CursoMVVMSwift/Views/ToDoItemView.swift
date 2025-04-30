@@ -27,11 +27,17 @@ struct ToDoItemView: View {
                     Spacer(minLength: 2)
                 }
                 
-                VStack {
+                VStack (alignment: .leading) {
                     Text(todo.title)
                         .font(.title)
                         .fontWeight(.bold)
                         .lineLimit(12)
+                    if let description = todo.note {
+                        Text(description)
+                            .font(.caption)
+                            .fontWeight(.light)
+                            .lineLimit(3)
+                    }
                 }
                 
                 Spacer(minLength: 8)

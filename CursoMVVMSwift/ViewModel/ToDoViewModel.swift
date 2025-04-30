@@ -71,23 +71,23 @@ class ToDoViewModel: ObservableObject {
         saveData()
     }
     
-    public func updateToDo() {
+    public func updateToDo(_ todo: ToDoItem) {
         
     }
     
-    public func updateStatus() {
+    public func updateStatus(_ todo: ToDoItem) {
         
     }
     
-    public func deleteToDo() {
+    public func deleteToDo(_ todo: ToDoItem) {
         
     }
     
-    public func archiveToDo() {
+    public func archiveToDo(_ todo: ToDoItem) {
         
     }
     
-    public func unArchiveToDo() {
+    public func unArchiveToDo(_ todo: ToDoItem) {
         
     }
 }

@@ -82,7 +82,11 @@ struct ToDoAddView: View {
             .disabled(isSaveEnabled)
         }
         .onAppear {
-            
+            if let todo = todo {
+                title = todo.title
+                note = todo.note  ?? ""
+                date = todo.date
+            }
         }
     }
 }
