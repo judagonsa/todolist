@@ -60,7 +60,7 @@ struct ToDoListView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
                     NavigationLink {
-                        
+                        ToDoArchiveListView()
                     } label: {
                         Image(systemName: "trash")
                             .resizable()

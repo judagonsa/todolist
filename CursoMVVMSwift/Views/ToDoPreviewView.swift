@@ -100,7 +100,6 @@ struct ToDoPreviewView: View {
                     }
                 }
             }
-            
         } else {
             EmptyView()
         }
