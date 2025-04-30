@@ -58,7 +58,12 @@ struct ToDoAddView: View {
             
             Button {
                 if  let todo = todo {
-                    
+                    viewModel.updateToDo(
+                        todo: todo,
+                        withTitle: title,
+                        note: note,
+                        date: date
+                    )
                 } else {
                     viewModel.addToDo(
                         withTitle: title,

@@ -71,8 +71,18 @@ class ToDoViewModel: ObservableObject {
         saveData()
     }
     
-    public func updateToDo(_ todo: ToDoItem) {
+    public func updateToDo(
+        todo: ToDoItem,
+        withTitle title: String,
+        note: String,
+        date: Date
+    ) {
+        guard let index = getToDoIndex(todo) else { return }
         
+        todos[index].title = title
+        todos[index].note = note
+        todos[index].date = date
+        saveData()
     }
     
     public func updateStatus(_ todo: ToDoItem) {
