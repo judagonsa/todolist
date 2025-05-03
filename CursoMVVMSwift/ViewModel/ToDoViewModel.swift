@@ -86,11 +86,17 @@ class ToDoViewModel: ObservableObject {
     }
     
     public func updateStatus(todo: ToDoItem) {
+        guard let index = getToDoIndex(todo: todo) else { return }
         
+        todos[index].isCompleted.toggle()
+        saveData()
     }
     
     public func deleteToDo(todo: ToDoItem) {
-        
+        guard let index = getToDoIndex(todo: todo) else { return }
+        let todoRemove = todos[index]
+        storeContainer.viewContext.delete(todoRemove)
+        saveData()
     }
     
     public func archiveToDo(todo: ToDoItem) {

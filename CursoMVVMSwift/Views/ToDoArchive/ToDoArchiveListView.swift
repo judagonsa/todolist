@@ -24,7 +24,8 @@ struct ToDoArchiveListView: View {
                     .padding(.horizontal)
                 }
             } else {
-                Text("empty")
+                ToDoNoArchiveView()
+                    .offset(y: UIScreen.main.bounds.height * 0.35)
             }
         }
         .padding(.top, 16)
