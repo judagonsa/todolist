@@ -25,6 +25,8 @@ struct ToDoItemView: View {
                             .fontWeight(.semibold)
                     }
                     Spacer(minLength: 2)
+                    
+                    ToDoStatusView(todo: todo)
                 }
                 
                 VStack (alignment: .leading) {

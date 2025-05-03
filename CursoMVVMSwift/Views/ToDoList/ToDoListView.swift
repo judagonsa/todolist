@@ -39,7 +39,8 @@ struct ToDoListView: View {
                     }
                     .padding(.horizontal)
                 } else {
-                    
+                    NoteToDoView(showCreationSheet: $showSheet)
+                        .offset(y: UIScreen.main.bounds.height * 0.3)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -60,7 +61,7 @@ struct ToDoListView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
                     NavigationLink {
-                        
+                        ToDoArchiveListView()
                     } label: {
                         Image(systemName: "trash")
                             .resizable()
