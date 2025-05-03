@@ -95,11 +95,13 @@ class ToDoViewModel: ObservableObject {
     
     public func archiveToDo(todo: ToDoItem) {
         guard let index = getToDoIndex(todo: todo) else { return }
-        todos[index].isArchive.toggle()
+        todos[index].isArchive = true
         saveData()
     }
     
     public func unArchiveToDo(todo: ToDoItem) {
-        
+        guard let index = getToDoIndex(todo: todo) else { return }
+        todos[index].isArchive = false
+        saveData()
     }
 }
